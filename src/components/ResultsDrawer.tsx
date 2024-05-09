@@ -9,7 +9,6 @@ import {
   Text,
   Box,
   useMediaQuery,
-  Button,
   Badge,
   Accordion,
   AccordionItem,
@@ -19,6 +18,8 @@ import {
 } from "@chakra-ui/react";
 import { ResultsDrawerProps } from "../interfaces/searchResult.interface";
 import { useSelectedPoint } from "../contexts/SelectedPointContext";
+import { FcInfo } from "react-icons/fc";
+
 
 const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
   isOpen,
@@ -34,6 +35,10 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
     return table ? table.table_nicename : facilityName;
   };
 
+  const getFacilityColorCode = (facilityName: string) => {
+    const table = tables.find((t) => t.table_name === facilityName);
+    return table ? table.color : facilityName;
+  };
 
   return (
     <Drawer
@@ -69,9 +74,10 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
               ([facilityName, facilityData]) => (
                 <AccordionItem key={facilityName}>
                   <h2>
-                    <AccordionButton>
+                    <AccordionButton color={getFacilityColorCode(facilityName)}>
+                      <FcInfo />
                       <Box as="span" flex="1" textAlign="left">
-                        <Text as={"b"}>{getFacilityNiceName(facilityName)}</Text>
+                        <Text as={"b"}> &nbsp; {getFacilityNiceName(facilityName)} {getFacilityColorCode(facilityName)}</Text>
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>

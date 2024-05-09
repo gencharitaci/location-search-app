@@ -6,4 +6,5 @@ export interface IPoint {
 export interface IQueryNearbyTable {
   table_name: string;
   table_nicename: string;
+  color: string;
 }
