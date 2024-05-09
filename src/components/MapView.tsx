@@ -1,4 +1,3 @@
-/* src/components/Map/MapView.tsx (MapView Component) **/
 import React, { useEffect, useRef, useState } from "react";
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
@@ -90,7 +89,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
             color: [45, 134, 245],
             width: 2,
           },
-          size: "16px",
+          size: "24px",
         });
 
         const clickPointGraphic = new Graphic({

@@ -1,7 +1,5 @@
 import * as React from "react";
 import { ChakraProvider, Box, Grid, theme } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
-// import { Logo } from "./Logo"
 
 import MapComponent from "./components/MapView";
 import { SelectedPointProvider } from "./contexts/SelectedPointProvider";
@@ -12,7 +10,7 @@ export const App = () => (
     <ChakraProvider theme={theme}>
       <Navbar />
       <Box textAlign="center" fontSize="xl">
-        <Grid minH="calc(100vh - 150px)" p={1}>
+        <Grid minH="calc(100vh - 122px)" p={1}>
           
           <MapComponent />
         </Grid>

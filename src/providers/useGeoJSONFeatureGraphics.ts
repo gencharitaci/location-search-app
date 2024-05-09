@@ -22,7 +22,7 @@ const useGeoJSONFeatureGraphics = (
     new SimpleMarkerSymbol({
       color,
       outline: { color: [255, 255, 255], width: 1 },
-      size: "12px",
+      size: "18px",
     });
 
   const addFacilityPoints = (

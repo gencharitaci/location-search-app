@@ -1,4 +1,3 @@
-// /components/ResultsDrawer.tsx
 import React from "react";
 import {
   Drawer,
@@ -19,6 +18,7 @@ import {
   AccordionPanel,
 } from "@chakra-ui/react";
 import { ResultsDrawerProps } from "../interfaces/searchResult.interface";
+import { useSelectedPoint } from "../contexts/SelectedPointContext";
 
 const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
   isOpen,
@@ -26,7 +26,14 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
   result,
   nearbyFacilities,
 }) => {
+  const { tables } = useSelectedPoint();
   const [isLargerThan450] = useMediaQuery("(min-width: 450px)");
+
+  const getFacilityNiceName = (facilityName: string) => {
+    const table = tables.find((t) => t.table_name === facilityName);
+    return table ? table.table_nicename : facilityName;
+  };
+
 
   return (
     <Drawer
@@ -64,7 +71,7 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                   <h2>
                     <AccordionButton>
                       <Box as="span" flex="1" textAlign="left">
-                        {facilityName}
+                        <Text as={"b"}>{getFacilityNiceName(facilityName)}</Text>
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>
@@ -95,6 +102,31 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                                   {item.distance_mile} miles
                                 </span>
                               )}
+                              {facilityName === "charlotte_fire_department_stations" && (
+                                <span>
+                                  {item.station_name} - {item.address} -{" "}
+                                  {item.x_2264} - {item.y_2264} -{" "}
+                                  {item.distance_mile} miles
+                                </span>
+                              )}
+                              {facilityName === "hospitals" && (
+                                <span>
+                                  {item.name} - {item.address} - {item.x_2264} -{" "}
+                                  {item.y_2264} - {item.distance_mile} miles
+                                </span>
+                              )}
+                              {facilityName === "libraries" && (
+                                <span>
+                                  {item.name} - {item.address} - {item.x_2264} -{" "}
+                                  {item.y_2264} - {item.distance_mile} miles
+                                </span>
+                              )}
+                              {facilityName === "schools" && (
+                                <span>
+                                  {item.name} - {item.address} - {item.x_2264} -{" "}
+                                  {item.y_2264} - {item.distance_mile} miles
+                                </span>
+                              )}
                             </li>
                           )
                         )}
@@ -107,7 +139,6 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
               )
             )}
           </Accordion>
-          <Button onClick={onClose}>Close</Button>
         </DrawerBody>
       </DrawerContent>
     </Drawer>

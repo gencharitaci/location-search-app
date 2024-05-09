@@ -3,17 +3,13 @@ import {
   Box,
   Flex,
   Heading,
-  IconButton,
-  useColorMode,
   useColorModeValue,
   Image,
 } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "../ColorModeSwitcher";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 
 const Navbar = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   const bgColor = useColorModeValue("rgba(255, 255, 255, 0.8)", "rgba(0, 0, 0, 0.8)");
   const logoSrc = "/assets/county-seal-white-small-retina.png"; 
   const backgroundImage = "https://source.unsplash.com/random/1920x1080?nature";
@@ -24,7 +20,7 @@ const Navbar = () => {
       backgroundSize="cover"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      p={4}
+      p={3}
       width="100%"
     >
       <Flex

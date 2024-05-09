@@ -63,7 +63,7 @@ const SearchBar = () => {
     queryMasterAddressTable({ address: value });
   };
   console.log("Search Term:", searchTerm);
-  
+
   const handleRadiusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setRadius(parseInt(event.target.value, 10));
   };
@@ -101,14 +101,14 @@ const SearchBar = () => {
     >
       <InputGroup>
         <InputLeftElement
-          mt="100px"
+          mt="130px"
           pointerEvents="none"
           children={<SearchIcon color="#3182ce" />}
         />
         <Input
           placeholder="Search in Mecklenburg Demo App"
           position="absolute"
-          top="100px"
+          top="130px"
           left="50%"
           transform="translateX(-50%)"
           zIndex="1"
@@ -127,7 +127,7 @@ const SearchBar = () => {
         {/* Radius Selector within Input */}
         <InputRightElement
           w="140px"
-          mt="100px"
+          mt="130px"
           children={
             <Select
               size="sm"
