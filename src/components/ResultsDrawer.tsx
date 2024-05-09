@@ -17,11 +17,23 @@ import {
   AccordionPanel,
   Card,
   CardBody,
+  Stack,
+  StackDivider,
+  Heading,
+  Divider,
+  AbsoluteCenter,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Tfoot,
+  Th,
+  Thead,
+  Tr,
 } from "@chakra-ui/react";
 import { ResultsDrawerProps } from "../interfaces/searchResult.interface";
 import { useSelectedPoint } from "../contexts/SelectedPointContext";
 import { FcInfo } from "react-icons/fc";
-
 
 const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
   isOpen,
@@ -79,23 +91,45 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                     <AccordionButton color={getFacilityColorCode(facilityName)}>
                       <FcInfo />
                       <Box as="span" flex="1" textAlign="left">
-                        <Text as={"b"}> &nbsp; {getFacilityNiceName(facilityName)}</Text>
+                        <Text as={"b"}>
+                          {" "}
+                          &nbsp; {getFacilityNiceName(facilityName)}
+                        </Text>
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
                     {facilityData ? (
-                      <Card>
+                      <TableContainer>
                         {facilityData.map(
                           (item: any, index: React.Key | null | undefined) => (
-                            <CardBody key={index}>
+                            <Table key={index} size={"sm"}>
+                              <Tbody>
                               {facilityName === "busstops_pt" && (
-                                <span>
-                                  {item.stopid} - {item.routes} -{" "}
-                                  {item.stopdesc} - {item.x_2264} -{" "}
-                                  {item.y_2264} - {item.distance_mile} miles
-                                </span>
+                                <>
+                                    <Tr>
+                                      <Td>Stop ID</Td>
+                                      <Td>{item.stopid}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Routes</Td>
+                                      <Td>{item.routes}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Stop Desc</Td>
+                                      <Td>{item.stopdesc}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">Lat: {item.y_2264}</Badge> | <Badge colorScheme="blue">Lon: {item.x_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
                               )}
                               {facilityName === "cats_light_rail_stations" && (
                                 <span>
@@ -110,7 +144,8 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                                   {item.distance_mile} miles
                                 </span>
                               )}
-                              {facilityName === "charlotte_fire_department_stations" && (
+                              {facilityName ===
+                                "charlotte_fire_department_stations" && (
                                 <span>
                                   {item.station_name} - {item.address} -{" "}
                                   {item.x_2264} - {item.y_2264} -{" "}
@@ -131,14 +166,16 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                               )}
                               {facilityName === "schools" && (
                                 <span>
-                                  {item.schlname} - {item.address} - {item.x_2264} -{" "}
-                                  {item.y_2264} - {item.distance_mile} miles
+                                  {item.schlname} - {item.address} -{" "}
+                                  {item.x_2264} - {item.y_2264} -{" "}
+                                  {item.distance_mile} miles
                                 </span>
                               )}
-                            </CardBody>
+                              </Tbody>
+                            </Table>
                           )
                         )}
-                      </Card>
+                      </TableContainer>
                     ) : (
                       <Text>No data available for {facilityName}</Text>
                     )}
