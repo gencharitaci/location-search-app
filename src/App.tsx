@@ -5,13 +5,15 @@ import { ColorModeSwitcher } from "./ColorModeSwitcher";
 
 import MapComponent from "./components/MapView";
 import { SelectedPointProvider } from "./contexts/SelectedPointProvider";
+import Navbar from "./components/NavBar";
 
 export const App = () => (
   <SelectedPointProvider>
     <ChakraProvider theme={theme}>
+      <Navbar />
       <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
+        <Grid minH="calc(100vh - 150px)" p={1}>
+          
           <MapComponent />
         </Grid>
       </Box>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Badge,
   Box,
@@ -27,6 +27,8 @@ import { useSelectedPoint } from "../contexts/SelectedPointContext";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  const searchBarRef = useRef<HTMLDivElement>(null);
   const { queryMasterAddressTable, data, loading, error } =
     useMasterAddressQuery();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,13 +53,17 @@ const SearchBar = () => {
     // Perform address search when there are more than 1 characters
     if (value.length > 1 && handleSearch) {
       handleSearch(value);
+      setShowResults(true);
+    } else {
+      setShowResults(false);
     }
   };
 
   const handleSearch = (value: string) => {
     queryMasterAddressTable({ address: value });
   };
-
+  console.log("Search Term:", searchTerm);
+  
   const handleRadiusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setRadius(parseInt(event.target.value, 10));
   };
@@ -68,7 +74,20 @@ const SearchBar = () => {
     onOpen();
   };
 
-  console.log("Search Term:", searchTerm);
+  const handleClickOutside = (event: MouseEvent) => {
+    if (searchBarRef.current && !searchBarRef.current.contains(event.target as Node)) {
+      setShowResults(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  
 
   return (
     <Box
@@ -78,6 +97,7 @@ const SearchBar = () => {
       left="50%"
       transform="translateX(-50%)"
       zIndex="100"
+      ref={searchBarRef}
     >
       <InputGroup>
         <InputLeftElement
@@ -134,7 +154,7 @@ const SearchBar = () => {
       {isLoadingNearbyFacilities && <div>Loading Nearby Facilities...</div>}
       {errorNearbyFacilities && <div>Error: {errorNearbyFacilities}</div>}
 
-      {data && data.length > 0 && (
+      {data && data.length > 0 && showResults && (
         <VStack
           spacing={1}
           mt={140}
