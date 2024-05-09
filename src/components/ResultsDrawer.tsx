@@ -15,6 +15,8 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
+  Card,
+  CardBody,
 } from "@chakra-ui/react";
 import { ResultsDrawerProps } from "../interfaces/searchResult.interface";
 import { useSelectedPoint } from "../contexts/SelectedPointContext";
@@ -77,17 +79,17 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                     <AccordionButton color={getFacilityColorCode(facilityName)}>
                       <FcInfo />
                       <Box as="span" flex="1" textAlign="left">
-                        <Text as={"b"}> &nbsp; {getFacilityNiceName(facilityName)} {getFacilityColorCode(facilityName)}</Text>
+                        <Text as={"b"}> &nbsp; {getFacilityNiceName(facilityName)}</Text>
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
                   <AccordionPanel pb={4}>
                     {facilityData ? (
-                      <ul>
+                      <Card>
                         {facilityData.map(
                           (item: any, index: React.Key | null | undefined) => (
-                            <li key={index}>
+                            <CardBody key={index}>
                               {facilityName === "busstops_pt" && (
                                 <span>
                                   {item.stopid} - {item.routes} -{" "}
@@ -129,14 +131,14 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                               )}
                               {facilityName === "schools" && (
                                 <span>
-                                  {item.name} - {item.address} - {item.x_2264} -{" "}
+                                  {item.schlname} - {item.address} - {item.x_2264} -{" "}
                                   {item.y_2264} - {item.distance_mile} miles
                                 </span>
                               )}
-                            </li>
+                            </CardBody>
                           )
                         )}
-                      </ul>
+                      </Card>
                     ) : (
                       <Text>No data available for {facilityName}</Text>
                     )}
