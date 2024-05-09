@@ -126,7 +126,7 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                                     </Tr>
                                     <Tr>
                                       <Td>Coordinates</Td>
-                                      <Td><Badge colorScheme="green">Lat: {item.y_2264}</Badge> | <Badge colorScheme="blue">Lon: {item.x_2264}</Badge></Td>
+                                      <Td><Badge colorScheme="green">X: {item.x}</Badge> | <Badge colorScheme="blue">Y: {item.y}</Badge></Td>
                                     </Tr>
                                     <Divider borderColor={"red"}/>
                                 </>
