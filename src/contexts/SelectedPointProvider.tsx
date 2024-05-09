@@ -28,11 +28,11 @@ export const SelectedPointProvider: FC<SelectedPointProviderProps> = ({
   const tablesDefault: IQueryNearbyTable[] = [
     { table_name: "busstops_pt", table_nicename: "Bus Stops", color: "rgb(255 0 0)" },
     { table_name: "cats_light_rail_stations", table_nicename: "CATS Light Rail Stations", color: "rgb(105 100 100)" },
-    { table_name: "cats_park_and_ride", table_nicename: "CATS Park & Ride", color: "rgb(255 0 255)" },
     { table_name: "charlotte_fire_department_stations", table_nicename: "Charlotte Fire Department Stations", color: "rgb(255 165 0)" },
     { table_name: "hospitals", table_nicename: "Hospitals", color: "rgb(30 130 130)" },
     { table_name: "libraries", table_nicename: "Libraries", color: "rgb(5 55 255)" },
     { table_name: "schools", table_nicename: "Schools", color: "rgb(250 115 15)" },
+    { table_name: "cats_park_and_ride", table_nicename: "CATS Park & Ride", color: "rgb(255 0 255)" },
   ];
   const [tables, setTables] = useState<IQueryNearbyTable[]>(tablesDefault);
 

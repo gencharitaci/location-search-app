@@ -123,44 +123,150 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                                 </>
                               )}
                               {facilityName === "cats_light_rail_stations" && (
-                                <span>
-                                  {item.name} - {item.mode} - {item.x_2264} -{" "}
-                                  {item.y_2264} - {item.distance_mile} miles
-                                </span>
+                                <>
+                                    <Tr>
+                                      <Td>Stop Name</Td>
+                                      <Td>{item.name}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Mode</Td>
+                                      <Td>{item.mode}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
                               )}
-                              {facilityName === "cats_park_and_ride" && (
-                                <span>
-                                  {item.name} - {item.address} - {item.routes} -{" "}
-                                  {item.x_2264} - {item.y_2264} -{" "}
-                                  {item.distance_mile} miles
-                                </span>
-                              )}
-                              {facilityName ===
-                                "charlotte_fire_department_stations" && (
-                                <span>
-                                  {item.station_name} - {item.address} -{" "}
-                                  {item.x_2264} - {item.y_2264} -{" "}
-                                  {item.distance_mile} miles
-                                </span>
+                              {facilityName === "charlotte_fire_department_stations" && (
+                                <>
+                                    <Tr>
+                                      <Td>Station</Td>
+                                      <Td>{item.label}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Address</Td>
+                                      <Td>{item.address}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Topo</Td>
+                                      <Td>{item.topo}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
                               )}
                               {facilityName === "hospitals" && (
-                                <span>
-                                  {item.name} - {item.address} - {item.x_2264} -{" "}
-                                  {item.y_2264} - {item.distance_mile} miles
-                                </span>
+                                <>
+                                    <Tr>
+                                      <Td>Name</Td>
+                                      <Td>{item.name}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Address</Td>
+                                      <Td>{item.address}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Phone</Td>
+                                      <Td>{item.phone}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
                               )}
                               {facilityName === "libraries" && (
-                                <span>
-                                  {item.name} - {item.address} - {item.x_2264} -{" "}
-                                  {item.y_2264} - {item.distance_mile} miles
-                                </span>
+                                <>
+                                    <Tr>
+                                      <Td>Name</Td>
+                                      <Td>{item.name}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Type</Td>
+                                      <Td>{item.library_type}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Address</Td>
+                                      <Td>{item.address}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
                               )}
                               {facilityName === "schools" && (
-                                <span>
-                                  {item.schlname} - {item.address} -{" "}
-                                  {item.x_2264} - {item.y_2264} -{" "}
-                                  {item.distance_mile} miles
-                                </span>
+                                <>
+                                    <Tr>
+                                      <Td>School Name</Td>
+                                      <Td>{item.schlname}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Type</Td>
+                                      <Td>{item.type}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Address</Td>
+                                      <Td>{item.address}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
+                              )}
+                              {facilityName === "cats_park_and_ride" && (
+                                <>
+                                    <Tr>
+                                      <Td>Name</Td>
+                                      <Td>{item.name}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Address</Td>
+                                      <Td>{item.address}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Routes</Td>
+                                      <Td>{item.routes}</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Distance</Td>
+                                      <Td>{item.distance_mile} miles</Td>
+                                    </Tr>
+                                    <Tr>
+                                      <Td>Coordinates</Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
+                                    </Tr>
+                                    <Divider borderColor={"red"}/>
+                                </>
                               )}
                               </Tbody>
                             </Table>

@@ -8,14 +8,16 @@ import {
   Flex,
   Input,
   InputGroup,
+  InputLeftAddon,
   InputLeftElement,
+  InputRightAddon,
   InputRightElement,
   Select,
   Text,
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
+import { SearchIcon, SmallCloseIcon } from "@chakra-ui/icons";
 import { useMasterAddressQuery } from "../providers/useQueryMasterAddressTable";
 import useFetchNearbyFacilities from "../providers/useFetchNearbyFacilities";
 import ResultsDrawer from "./ResultsDrawer";
@@ -75,9 +77,17 @@ const SearchBar = () => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (searchBarRef.current && !searchBarRef.current.contains(event.target as Node)) {
+    if (
+      searchBarRef.current &&
+      !searchBarRef.current.contains(event.target as Node)
+    ) {
       setShowResults(false);
     }
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    setShowResults(false);
   };
 
   useEffect(() => {
@@ -86,8 +96,6 @@ const SearchBar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-  
-  
 
   return (
     <Box
@@ -100,10 +108,12 @@ const SearchBar = () => {
       ref={searchBarRef}
     >
       <InputGroup>
+
         <InputLeftElement
           mt="130px"
           pointerEvents="none"
-          children={<SearchIcon color="#3182ce" />}
+          children={
+          <SearchIcon color="#3182ce" />}
         />
         <Input
           placeholder="Search in Mecklenburg Demo App"
@@ -125,10 +135,16 @@ const SearchBar = () => {
           onChange={handleChange}
         />
         {/* Radius Selector within Input */}
-        <InputRightElement
-          w="140px"
-          mt="130px"
-          children={
+        <InputRightElement w="180px" mt="130px">
+          <Flex alignItems="center">
+            {searchTerm && (
+              <SmallCloseIcon
+                color="black.500"
+                _hover={{ cursor: "pointer" }}
+                onClick={clearSearch}
+                mr="4"
+              />
+            )}
             <Select
               size="sm"
               border="none"
@@ -145,8 +161,9 @@ const SearchBar = () => {
               <option value="5">5 Miles</option>
               <option value="10">10 Miles</option>
             </Select>
-          }
-        />
+          </Flex>
+        </InputRightElement>
+
       </InputGroup>
 
       {loading && <div>Loading...</div>}

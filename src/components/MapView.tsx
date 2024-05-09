@@ -84,7 +84,7 @@ const MapComponent: React.FC<MapComponentProps> = () => {
         });
 
         var clickSelectMarkerSymbol = new SimpleMarkerSymbol({
-          color: [217, 32, 32],
+          color: [32, 32, 32],
           outline: {
             color: [45, 134, 245],
             width: 2,
