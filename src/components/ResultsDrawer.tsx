@@ -15,20 +15,11 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
-  Card,
-  CardBody,
-  Stack,
-  StackDivider,
-  Heading,
   Divider,
-  AbsoluteCenter,
   Table,
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
-  Th,
-  Thead,
   Tr,
 } from "@chakra-ui/react";
 import { ResultsDrawerProps } from "../interfaces/searchResult.interface";
@@ -126,7 +117,7 @@ const ResultsDrawer: React.FC<ResultsDrawerProps> = ({
                                     </Tr>
                                     <Tr>
                                       <Td>Coordinates</Td>
-                                      <Td><Badge colorScheme="green">X: {item.x}</Badge> | <Badge colorScheme="blue">Y: {item.y}</Badge></Td>
+                                      <Td><Badge colorScheme="green">X: {item.x_2264}</Badge> | <Badge colorScheme="blue">Y: {item.y_2264}</Badge></Td>
                                     </Tr>
                                     <Divider borderColor={"red"}/>
                                 </>
