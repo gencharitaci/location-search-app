@@ -34,7 +34,7 @@ const Navbar = () => {
       >
         <Flex alignItems="center">
           <Image src={logoSrc} alt="Company Logo" boxSize="50px" mr={4} />
-          <Heading size="2xl">Mecklenburg Country | GIS Demo App</Heading>
+          <Heading size="2xl">Mecklenburg County | GIS Demo App</Heading>
         </Flex>
         <ColorModeSwitcher />
       </Flex>
