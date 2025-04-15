@@ -18,7 +18,7 @@ const useFetchGeoJSON = (tableName: string) => {
       setErrorGeoJSON(null);
 
       try {
-        const response = await fetch(`https://api.mcmap.org/v1/geojson/${tableName}?geom_column=the_geom&precision=9`);
+        const response = await fetch(`https://mcmap.org/api/v1/geojson/${tableName}?geom_column=the_geom&precision=9`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

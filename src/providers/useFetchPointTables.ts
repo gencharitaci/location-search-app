@@ -11,7 +11,7 @@ const useFetchPointTables = () => {
     const fetchTables = async () => {
       try {
         const response = await axios.get(
-          "https://api.mcmap.org/v1/list_tables"
+          "https://mcmap.org/api/v1/list_tables"
         );
         if (response.data && response.status === 200) {
           const filteredTables: IPointTable[] = response.data.filter(

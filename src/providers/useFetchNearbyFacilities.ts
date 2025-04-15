@@ -44,7 +44,7 @@ const useFetchNearbyFacilities = () => {
 
       const nearbyFacilitiesPromises = tables.map(async (table) => {
         const { table_name } = table;
-        const queryUrl = `https://api.mcmap.org/v1/nearest/${table_name}/${selectedPoint.x},${selectedPoint.y},2264?${paramsString}`;
+        const queryUrl = `https://mcmap.org/api/v1/nearest/${table_name}/${selectedPoint.x},${selectedPoint.y},2264?${paramsString}`;
 
         try {
           const response = await axios.get(queryUrl);

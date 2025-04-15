@@ -11,7 +11,7 @@ export function useMasterAddressQuery() {
   const queryMasterAddressTable = async (
     options: QueryOptions
   ): Promise<void> => {
-    const url: string = "https://api.mcmap.org/v1/query/master_address_table";
+    const url: string = "https://mcmap.org/api/v1/query/master_address_table";
     let params: MasterAddressTableParams;
 
     if (options.address) {
